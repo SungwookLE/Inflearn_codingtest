@@ -1,5 +1,6 @@
 # Coding Test Prepare with c/c++
 - INFLEARN LECTURE: IT 기업 취업을 위한: 코딩 테스트 혼자서 정복하기 (26,400원)
+- Writer: Sungwook LE
 - DATE: '22.3/9~
 - LANGUAGE: `C++`
 - 목표:
@@ -42,7 +43,7 @@
         ![](./img/2022-03-09-18-38-04.png)
         - 코드: [dp_changecoin.cpp](./DynamicProgramming/dp_changecoin.cpp)
         
-    
+
     
 
 
