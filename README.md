@@ -53,22 +53,41 @@
     ![](./img/2022-03-09-20-25-14.png)
     ![](./img/2022-03-09-20-24-47.png)
     - 점화식: 
-        ```
-        if (j >= K)
-            DP[i][j] = max(DP[i-1][j], DP[i-1][j-current_weight]+current_price)
-        else if (j < K)
+        ```c++
+        if (j >= W)
+            DP[i][j] = max(DP[i-1][j], DP[i-1][j-W]+current_price)
+            // 배낭의 무게 허용량(j)이 보석의 무게(W)보다 크다면, 새로운 보석을 넣었을 때와 넣지 않았을 때의 max값이 가방에 들어갈 수 있는 보석의 최대값어치이다. 
+        else if (j < W)
             DP[i][j] = DP[i-1][j]
+            // 보석의 무게(W)가 배낭 허용량(j)보다 무거운 케이스
         ```
     - 코드: [dp_backpack_ruby.cpp](./DynamicProgramming/dp_backpack_ruby.cpp)
 
 2. 주어진 두개의 문자열의 LCS(Longest Common Sequence)를 찾아라
+
     - 풀이: 작은 문제들을 풀어나가는 과정을 통해 `LCS`를 찾아내자.
-    - `LCS`는 연속적일 필요는 없다.
+    - 문제의 조건에서 `LCS`는 연속적일 문자열일 필요는 없었다.
     - 점화식:
         ![](./img/2022-03-10-23-53-01.png)
         ![](./img/2022-03-10-23-51-44.png)
 
-        :::: 해당 부분이 제일 중요한 부분이다. 스스로 유도해보자. (3/10)
+        ```c++
+        vector<vector<int>> DP(A.length()+1, vector<int>(B.length()+1,0));
+        string A_token_last;
+        for(int i = 1 ; i <= A.length(); ++i){
+            A_token_last = A[i-1];
+            string B_token_last;
+            for(int j = 1 ; j <= B.length(); ++j){
+                B_token_last = B[j-1];
+
+                if (A_token_last == B_token_last)
+                    DP[i][j] = DP[i-1][j-1]+1; 
+                    //두 문자열의 마지막 문자가 같다면, LCS("A문자열에서 마지막 문자 제거", "B문자열에서 마지막 문자 제거") + 1 의 값의 DP[i][j]의 LCS 최대값
+                else
+                    DP[i][j] = max(DP[i-1][j], DP[i][j-1]);
+                    //두 문자열의 마지막 문자가 다르다면, max(LCS("A문자열", "B문자열에서 마지막 문자 제거"), LCS("A문자열에서 마지막 문자 제거", "B문자열"))
+        }
+        ```
 
     - 코드: [dp_LCS.cpp](./DynamicProgramming/dp_LCS.cpp)
 
