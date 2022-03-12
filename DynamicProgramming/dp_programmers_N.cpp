@@ -66,3 +66,7 @@ int main(){
     cout << "ANSWER: " << -1 << endl;
     return -1;
 }
+
+//bottom-up 방식으로 풀었고 고정된 2차원 배열이 아니라, 유동적인 2차원 배열을 사용
+//배열의 효율성을 높히기 위해 STL중 unordered_set 을 사용하여 중복되는 숫자는 따로 제거
+//나누기 0이 되는 
