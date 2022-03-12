@@ -1,12 +1,16 @@
-# CodingTest prepare with `c++`
-- INFLEARN LECTURE: IT 기업 취업을 위한: 코딩 테스트 혼자서 정복하기 (26,400원)
-- Writer: Sungwook LE
-- DATE: '22.3/9~
-- LANGUAGE: `C++`
-- 목표:
+# CodingTest Prepare
+
+--- 
+ - Lecture: IT 기업 취업을 위한: 코딩 테스트 혼자서 정복하기 (INFLEARN, 26,400원)
+ - Date: '22.3/9~
+ - Writer: Sungwook LE
+ - Language: `C++`
+ - 목표:
     1. 문제가 요구하는 알고리즘을 파악할 수 있다.
     2. 최소한의 문법으로 최대한 깔끔한 코드를 작성할 수 있다. 
     3. 공통적으로 출제되는 문제의 **템플릿**을 작성/이해하고 이를 통해 문제를 풀자.
+
+--- 
 
 ## 1. 동적프로그래밍
 - Dynamic Programming = **분할정복 프로그래밍**
@@ -32,8 +36,8 @@
 - [dp_sequence.cpp](./DynamicProgramming/dp_sequence.cpp)
 - 실제 코딩테스트 문제는 `점화식`을 주지 않으니, 직접 유도해야 한다.
 
-### 1-4. 연습문제
-- 큰 문제를 작은 문제부터 해결하여 계산하기: 1차원 배열 (대표적인 문제**)
+### 1-4. 연습문제(1차원 DP)
+- 큰 문제를 작은 문제부터 해결하여 계산하기: 1차원 배열
 #### 1. 특정 금액을 만들 수 있는 동전의 최소개수를 찾아라
 ![](./img/2022-03-09-17-39-39.png)
     - 풀이: 20원으로 조합되기 위한 조합의 수는 15원의 조합 + 1 또는 17원의 조합 + 1 의 조합의 수를 갖는다.
@@ -45,8 +49,8 @@
     ![](./img/2022-03-12-16-32-57.png)
     - 코드: [dp_changecoin.cpp](./DynamicProgramming/dp_changecoin.cpp)
         
-### 1-5. 실전문제
-- 큰 문제를 작은 문제부터 해결하여 계산하기: 2차원 배열 (대표적인 문제**)
+### 1-5. 실전문제(2차원 DP)
+- 큰 문제를 작은 문제부터 해결하여 계산하기: 2차원 배열
 #### 1. 가방에 담을 수 있는 보석의 최대 값어치를 담아 훔치자
 ![](./img/2022-03-09-19-44-08.png)
  - 풀이: 작은 문제들을 풀어나가는 과정을 통해 N=4, K=14 위치의 값을 얻어내자
@@ -55,14 +59,14 @@
     ![](./img/2022-03-09-20-24-47.png)
     ![](./img/2022-03-12-16-33-35.png)
  - 점화식: 
- ```c++
- if (j >= W)
-     DP[i][j] = max(DP[i-1][j], DP[i-1][j-W]+current_price)
+    ```c++
+    if (j >= W)
+        DP[i][j] = max(DP[i-1][j], DP[i-1][j-W]+current_price)
      // 배낭의 무게 허용량(j)이 보석의 무게(W)보다 크다면, 새로운 보석을 넣었을 때와 넣지 않았을 때의 max값이 가방에 들어갈 수 있는 보석의 최대값어치이다. 
- else if (j < W)
-    DP[i][j] = DP[i-1][j]
+    else if (j < W)
+        DP[i][j] = DP[i-1][j]
     // 보석의 무게(W)가 배낭 허용량(j)보다 무거운 케이스
- ```
+    ```
  - 코드: [dp_backpack_ruby.cpp](./DynamicProgramming/dp_backpack_ruby.cpp)
 
 #### 2. 주어진 두개의 문자열의 LCS(Longest Common Sequence)를 찾아라
@@ -108,7 +112,7 @@
  최솟값이 8보다 크면 -1을 return 합니다.
 
 - 문제 풀이: bottom-up으로 풀 수 있는 배열을 설계하여 풀자(`점화식`)
-![](./img/2022-03-12-16-31-25.png)
+    ![](./img/2022-03-12-16-31-25.png)
 
 - 코드: [dp_programmers_N](./DynamicProgramming/dp_programmers_N.cpp)
 
@@ -125,16 +129,16 @@
  - 문제 풀이: bottom-up으로 풀 수 있는 배열을 설계하여 풀자(`점화식`)
  - 처음 생각한 방식은 삼각형의 위에서 부터 모든 경로에 대한 경우의 수를 따지는 것은 동적프로그래밍이라기 보다는 브루트포스 방식(모든 경우를 naive하게 전부 계산)가 된다.
  - 삼각형의 밑변에서 부터 시작하여 최대 합이 나오는 것을 선택해주면 모든 경우의 수를 따지지 않고서 삼각형 경로의 최대합을 구할 수 있다. 
- ```
- DP[i][j] = max( DP[i-1][j] + triangle[height-i][j-1],DP[i-1][j+1] + triangle[height-i][j-1]);
- ```
- ![](./img/2022-03-12-16-31-56.png)
-
-
+    ```
+    DP[i][j] = max( DP[i-1][j] + triangle[height-i][j-1],DP[i-1][j+1] + triangle[height-i][j-1]);
+    ```
+    ![](./img/2022-03-12-16-31-56.png)
 
  - 코드: [dp_programmers_tri](./DynamicProgramming/dp_programmers_tri.cpp)
 
 
 
+
+---
 ## END & Reference
 1. [c언어 문법위키](https://wikidocs.net/book/1411)
