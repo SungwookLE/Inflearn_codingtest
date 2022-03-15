@@ -21,7 +21,6 @@ int main(){
     cin >> fx >> fy;
     q.push({sx, sy});
 
-
     //---------------- |solution| ----------------
     while(q.size() > 0){
 
