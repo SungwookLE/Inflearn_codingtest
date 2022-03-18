@@ -409,7 +409,8 @@
 
 #### 2. 욕심쟁이 조이: DFS와 DP의 결합
 
-- 문제 설명: ![](./img/2022-03-16-00-39-21.png)
+- 문제 설명: ![](./img/2022-03-18-19-51-18.png)
+![](./img/2022-03-16-00-39-21.png)
 
 - 문제 풀이:
     - 1번 아파트 문제와 마찬가지로 `DFS`를 써서 풀 수 있다.
@@ -426,7 +427,7 @@
 
 - 문제 구현
     - DP와 DFS의 결합: ![](./img/2022-03-16-01-01-12.png)
-    - 코드: [DFS_strawbery_joy.cpp](./DFS_search/DFS_strawbery_joy.cpp)
+    - 코드: [DFS_strawbery_joy.cpp](./DFS_search/DFS_strawbery_joy_again.cpp)
 
 ---
 ## END & Reference
