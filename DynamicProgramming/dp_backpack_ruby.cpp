@@ -23,6 +23,13 @@ int main(){
         }
     }
 
+
+    for(int i = 1 ; i <= N; ++i){
+        for(int j = 1 ; j <= K ; ++j)
+            cout << DP[i][j] << " ";
+        cout << endl;
+    }
+
     cout << DP[N][K] << endl;
     return 0;
 }
